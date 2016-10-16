@@ -1,0 +1,6 @@
+logging:
+  level: INFO
+  loggers:
+    de.justpegasus: DEBUG
+path: l:\music\
+defaultArtist: Arthur Artist
