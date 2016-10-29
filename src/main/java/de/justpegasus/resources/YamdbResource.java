@@ -16,7 +16,7 @@ import de.justpegasus.views.AlbumView;
 @Path("/yamdb")
 @Produces(MediaType.TEXT_HTML)
 public class YamdbResource {
-  final String defaultArtist, defaultFolder = "c:\\Users\\lthrun\\Music\\A Shade Of My Former Self";
+  final String defaultArtist, defaultFolder = "~/Music";
 
   /**
    * @param artist the artist
@@ -36,7 +36,7 @@ public class YamdbResource {
   public AlbumView showAlbum(@QueryParam("folder") Optional<String> folder){
     Album album = new Album(folder.orElse(defaultFolder));
     Reader reader = new Reader(folder.orElse(defaultFolder));
-    album.setTracks(reader.listMusicFiles());
+    album.setTracks(reader.listMusicFiles(album.getFolder()));
     album.setArtist(reader.getArtist());
     return new AlbumView(album);
   }

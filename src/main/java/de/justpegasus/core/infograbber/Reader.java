@@ -53,9 +53,14 @@ public class Reader {
 //    }
   }
   
-  public ArrayList<Track> listMusicFiles(){
+  /**
+   * Returns music files in a given directory.
+   * @param directory
+   * @return
+   */
+  public ArrayList<Track> listMusicFiles(String directory){
     ArrayList<Track> tracks = new ArrayList<Track>();
-    File rootPathDir = new File(rootPath);
+    File rootPathDir = new File(directory);
     if (Files.isDirectory(rootPathDir.toPath())){
         for (File trackFile : rootPathDir.listFiles()){
           try {
@@ -77,7 +82,7 @@ public class Reader {
     String variousArtists = "Various Artists";
     String curArtist = null;
     boolean various = false;
-    for (Track track : listMusicFiles()){
+    for (Track track : listMusicFiles(rootPath)){
       if (curArtist == null){
         curArtist = track.getArtist();
       } else {
@@ -99,22 +104,7 @@ public class Reader {
   }
   
   public static void main(String[] args) throws IOException {
-//    try {
-//      Files.list(new File("c:\\Users\\lthrun\\Music\\A Shade Of My Former Self").toPath());
-//    } catch (IOException e) {
-//      // TODO Auto-generated catch block
-//      e.printStackTrace();
-//    }
-//    for (File curFile : new File("c:\\Users\\lthrun\\Music\\A Shade Of My Former Self").listFiles()){
-//      System.out.println(curFile.getName());
-//      System.out.println(Files.probeContentType(curFile.toPath()));
-//    }
     
-//    new Reader("l:/music/Epica-The_Holographic_Principle-WEB-2016-ENTiTLED/00-epica-the_holographic_principle-web-2016.jpg");
-    
-    for (Track track : new Reader("c:\\Users\\lthrun\\Music\\A Shade Of My Former Self").listMusicFiles()){
-      System.out.println(track.toString());
-    }
   }
 
 }

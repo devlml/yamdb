@@ -2,5 +2,12 @@ logging:
   level: INFO
   loggers:
     de.justpegasus: DEBUG
-path: l:\music\
+path: /home/lutz/Music
 defaultArtist: Arthur Artist
+server:
+  applicationConnectors:
+    - type: http
+      port: 8686
+  adminConnectors:
+    - type: http
+      port: 8081
