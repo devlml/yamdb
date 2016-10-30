@@ -36,7 +36,7 @@ public class YamdbResource {
   public AlbumView showAlbum(@QueryParam("folder") Optional<String> folder){
     Album album = new Album(folder.orElse(defaultFolder));
     Reader reader = new Reader(folder.orElse(defaultFolder));
-    album.setTracks(reader.listMusicFiles(album.getFolder()));
+    album.setTracks(reader.listMusicFilesForDirectory(album.getFolder()));
     album.setArtist(reader.getArtist());
     return new AlbumView(album);
   }

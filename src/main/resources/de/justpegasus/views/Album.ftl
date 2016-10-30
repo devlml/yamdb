@@ -12,6 +12,10 @@
   <ul>
   <#list album.tracks as track>
   	<li>${track.title}</li>
+    <audio controls>
+      <source src="${track.source}" >
+      Your browser does not support the audio element.
+    </audio>
   </#list>
   </ul>
 </body>
